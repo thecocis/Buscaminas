@@ -66,7 +66,6 @@ public class Tablero {
 		
 		//arriba
 		if (i <= 0 && j >= 1 && j < n-1) {
-			System.out.print("arriba");
 			tab.right(i, j, tablero);
 			tab.downRight(i, j, tablero);
 			tab.down(i, j, tablero);
@@ -76,7 +75,6 @@ public class Tablero {
 		
 		//esquina superior derecha
 		else if (i <= 0 && j >= n-1) {
-			System.out.print("arriba d");
 			tab.down(i, j, tablero);
 			tab.downLeft(i, j, tablero);
 			tab.left(i, j, tablero);
@@ -84,7 +82,6 @@ public class Tablero {
 		
 		//derecha
 		else if (j >= n-1 && i >= 1 && i < m-1) {
-			System.out.print("d");
 			tab.down(i, j, tablero);
 			tab.downLeft(i, j, tablero);
 			tab.left(i, j, tablero);
@@ -94,7 +91,6 @@ public class Tablero {
 		
 		//esquina inferior derecha
 		else if (i >= m-1 && j >= n-1) {
-			System.out.print("ab d");
 			tab.left(i, j, tablero);
 			tab.upLeft(i, j, tablero);
 			tab.up(i, j, tablero);
@@ -102,7 +98,6 @@ public class Tablero {
 		
 		//abajo
 		else if (i >= m-1 && j >= 1 && j < n-1) {
-			System.out.print("a");
 			tab.up(i, j, tablero);
 			tab.upRight(i, j, tablero);
 			tab.right(i, j, tablero);
@@ -112,7 +107,6 @@ public class Tablero {
 		
 		//esquina inferior izquierda
 		else if (i >= m-1 && j <= 0) {
-			System.out.print("ab i");
 			tab.up(i, j, tablero);
 			tab.upRight(i, j, tablero);
 			tab.right(i, j, tablero);
@@ -120,7 +114,6 @@ public class Tablero {
 		
 		//izquierda
 		else if (j <= 0 && i >= 1 && i < m-1) {
-			System.out.print("i");
 			tab.up(i, j, tablero);
 			tab.upRight(i, j, tablero);
 			tab.right(i, j, tablero);
@@ -130,14 +123,12 @@ public class Tablero {
 		
 		//esquina superior izquierda
 		else if (i <= 0 && j <= 0) {
-			System.out.print("arriba i");
 			tab.right(i, j, tablero);
 			tab.downRight(i, j, tablero);
 			tab.down(i, j, tablero);
 		}
 		
 		else if (i>=1 && i<= m-1 && j>=1  && j <= n-1){
-			System.out.print("in");
 			tab.up(i, j, tablero);
 			tab.upRight(i, j, tablero);
 			tab.right(i, j, tablero);
@@ -147,16 +138,71 @@ public class Tablero {
 			tab.left(i, j, tablero);
 			tab.upLeft(i, j, tablero);
 		}else {
-			System.out.print("F");
+			System.out.print("F, ha petado");
 		}
 	}
 	
 	public int[] crearBombas(int m, int n, int nBombas) {
-
+		int mul = m*n;
+		int arrayBombas[] = new int[nBombas];
+		for (int z = 0; z<nBombas; z++) {
+			arrayBombas[z] = 0;
+		}
+		
+		List<Integer> numbers = new ArrayList<>(mul);
+		for (int i = 1; i < mul+1; i++) {
+			numbers.add(i);
+		}
+		
+		Random rand = new Random();
+		
+		int contador = 0;
+		while(numbers.size()>(mul - nBombas)) {
+			int valorEntero = rand.nextInt(numbers.size());
+			arrayBombas[contador] = valorEntero;
+			numbers.remove(valorEntero);
+			contador++;
+		}
+		
+		//comprobacion de los numeros
+		for (int s = 0; s< nBombas; s++) {
+			//System.out.print(arrayBombas[s]);
+			//System.out.println(" ");
+		}
+		
+		return arrayBombas;
 	}
 	
 	public int[][] posicionarBombasCreadas(int arrayBombas[], int nBombas, int[][] tablero, int m, int n) {
-
+		int fila = 0;
+		int columna = 0;  
+		double auxfila = 0.0;
+		int auxiliar = 0;
+		for (int i = 0; i < nBombas; i++) {
+			auxiliar = arrayBombas[i];
+			auxfila = auxiliar/n;
+			fila = (int)auxfila;
+			columna = auxiliar%n;
+			if (columna == 0) {
+				columna = n-1;
+				fila--;
+			}else {
+				columna--;
+			}
+			/*
+			System.out.println(" ");
+			System.out.print(auxiliar);
+			System.out.print(" ");
+			System.out.print(fila);
+			System.out.print(" ");
+			System.out.print(columna);
+			System.out.println(" ");
+			*/
+			
+			tablero[fila][columna] = 9;
+		}
+		
+		return tablero;
 	}
 	
 	public int[][] crearTableroConNumeros(int m, int n, int[][] tablero, Tablero tab) {
@@ -192,9 +238,9 @@ public class Tablero {
 		System.out.println("----------------------------------------------\n");
 		System.out.println("  SELECCIONA UN NIVEL DE DIFICULTAD\n");
 		
-		System.out.println("   1. NIVEL FÁCIL: 8x8 Y 10 BOMBAS\n");
+		System.out.println("   1. NIVEL FÁCIL: 8x8 Y 7 BOMBAS\n");
 		
-		System.out.println("   2. NIVEL MEDIO 15x20 Y 25 BOMBAS\n");
+		System.out.println("   2. NIVEL MEDIO 15x20 Y 30 BOMBAS\n");
 
 		
 		
@@ -217,7 +263,7 @@ public class Tablero {
 		}else if (seleccion == 2) {
 			m = 15;
 			n = 20;
-			nBombas = 13;
+			nBombas = 30;
 		}
 		Tablero tab = new Tablero();
 
@@ -231,6 +277,7 @@ public class Tablero {
 		arrayBombas = tab.crearBombas(m, n, nBombas);
 		tablero = tab.posicionarBombasCreadas(arrayBombas, nBombas, tablero, m, n);
 		
+		/*
 		//PARA PRUEBAS
 		tablero[0][0] =  9;
 		tablero[0][4] =  9;
@@ -242,12 +289,11 @@ public class Tablero {
 		tablero[7][0] =  9;
 		tablero[7][3] =  9;
 		tablero[7][5] =  9;
-		
+		*/
 		
 		tab.mostrarTablero(m, n, tablero);
 		
 		tablero = tab.crearTableroConNumeros(m, n, tablero, tab);
-		
 		
 		
 		System.out.println(" ");
