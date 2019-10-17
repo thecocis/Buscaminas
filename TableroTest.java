@@ -7,7 +7,46 @@ public class TableroTest {
 	//*****************************************************
 	//			TESTS CAJA NEGRA CREAR TABLERO	
 	//*****************************************************
+	public int[][] tableroBase(int num) {
+		if (num == 0) {
+			int m_AUX = 12;
+			int n_AUX = 12;
+			//int nBombas_AUX = 24;
+			
+			Tablero tabAUX = new Tablero();
+			int tablero[][] = new int[m_AUX][n_AUX];
+			tablero = tabAUX.crearTablero(m_AUX,n_AUX);
+			
+			tablero[0][4] = 9;
+			tablero[2][2] = 9;
+			tablero[2][3] = 9;
+			tablero[2][4] = 9;
+			tablero[2][11] = 9;
+			tablero[3][0] = 9;
+			tablero[4][1] = 9;
+			tablero[4][2] = 9;
+			tablero[4][3] = 9;
+			tablero[4][9] = 9;
+			tablero[4][11] = 9;
+			tablero[5][1] = 9;
+			tablero[5][3] = 9;
+			tablero[5][7] = 9;
+			tablero[6][2] = 9;
+			tablero[6][8] = 9;
+			tablero[7][3] = 9;
+			tablero[9][11] = 9;
+			tablero[10][1] = 9;
+			tablero[10][2] = 9;
+			tablero[10][9] = 9;
+			tablero[11][0] = 9;
+			tablero[11][5] = 9;
+			tablero[11][10] = 9;
+		}
 	
+	return tablero;
+	}
+	
+	//Probar con negativos y 0
 	@Test
 	public void testOfCrearTablero1() {
 		Tablero tab = new Tablero();
@@ -239,7 +278,37 @@ public class TableroTest {
 		assertArrayEquals("La bomba no se posiciona correctamente", tablero, tablero_expected);	
 		
 	}
-	
+	/*
+	@Test
+	public void testOfOpen() {
+		int[][] tablero = tableroBase(0);
+		
+		
+		
+	}
+	*/
 
+	@Test
+	public void testOfTableroUsuario1() {
+		int m = 8;
+		int n = 8;
+		Tablero tab = new Tablero();
+		char[][] tableroUsuario = tab.crearTableroUsuario(m,n);
+		char[][] tableroExpected = {{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		assertArrayEquals("Tablero usuario mal", tableroUsuario, tableroExpected);
+	}
+	
+	@Test
+	public void testOfTableroUsuario2() {
+		try {
+		int m = -1;
+		int n = 8;
+		Tablero tab = new Tablero();
+		char[][] tableroUsuario = tab.crearTableroUsuario(m,n);
+		assertTrue(false);
+		}catch (Exception e) {
+			assertTrue(true);
+			}
+		}
 	
 }
