@@ -51,4 +51,66 @@ public class Menu {
 		}
 		return seleccion;
 	}
+	
+	public int[] crearMenuTirada(int m, int n) {
+
+		int arrayTirada[] = new int[3];
+		System.out.println("----------------------------------------------\n");
+		System.out.println("  SELECCIONA LA CASILLA QUE QUEIRES PICAR Y DI QUÉ QUIERES HACER: \n");
+		
+		Scanner reader = new Scanner(System.in);
+		
+		int fila = 0;
+		int columna = 0;
+		int accion = 0;
+		System.out.print("  FILA (de la 1 a la ");
+		System.out.print(m);
+		System.out.println("):");
+		fila = reader.nextInt();
+		while(fila<1 || fila > m) {
+			System.out.print("   INSERTA UNA FILA VÁLIDA PESAO (de la 1 a la ");
+			System.out.print(m);
+			System.out.println("):");
+			fila = reader.nextInt();
+		}
+		
+		System.out.print("  COLUMNA (de la 1 a la ");
+		System.out.print(m);
+		System.out.println("):");
+		columna = reader.nextInt();
+		while(columna<1 || columna > n) {
+			System.out.print("   INSERTA UNA COLUMNA VÁLIDA PESAO (de la 1 a la ");
+			System.out.print(n);
+			System.out.println("):");
+			columna = reader.nextInt();
+		}
+		
+		System.out.println("  SI DESEA ABRIR LA CASILLA PULSE 1");
+		System.out.println("  SI DESEA PONER UNA BANDERITA PULSE 2");
+		System.out.println("  SI DESEA PONER UNA MARCA DE BOMBA PULSE 3");
+		System.out.println("  SI DESEA PONER UN INTERROGANTE PULSE 4");
+
+		System.out.println("\n  	GRACIAS");
+
+		accion = reader.nextInt();
+		while(accion<1 || accion > 4) {
+			System.out.print("   INSERTA UNA COLUMNA VÁLIDA PESAO (de la 1 a la ");
+			System.out.print(n);
+			System.out.println("):");
+			accion = reader.nextInt();
+		}
+		
+		arrayTirada[0] = fila - 1;
+		arrayTirada[1] = columna - 1;
+		arrayTirada[2] = accion - 1;
+		
+		return arrayTirada;
+		
+		
+	}
+	
+	
+	
+	
+	
 }
