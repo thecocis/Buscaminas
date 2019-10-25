@@ -56,7 +56,6 @@ public class Tablero {
 		int accion = 0;
 		int arrayTirada[] = new int[3];
 		
-		AbrirCasilla abrirCasilla = new AbrirCasilla();
 		
 		//por aquí empezar el while.
 		System.out.println(" ");
@@ -70,7 +69,8 @@ public class Tablero {
 		columnaSeleccionada = arrayTirada[1];
 		accion = arrayTirada[2];
 
-		tableroUsuario = abrirCasilla.abrirCasilla(filaSeleccionada, columnaSeleccionada, accion, tableroUsuario, tableroInterno);
+		AbrirCasilla abrirCasilla = new AbrirCasilla();
+		tableroUsuario = abrirCasilla.abrirCasilla(filaSeleccionada, columnaSeleccionada, accion, tableroUsuario, tableroInterno , m, n);
 
 		prints.tableroUsuario(m, n, tableroUsuario);
 	}

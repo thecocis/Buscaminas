@@ -50,7 +50,7 @@ public class PonerNumeros {
 			downRight(i, j, tablero);
 			down(i, j, tablero);
 			downLeft(i, j, tablero);
-			 left(i, j, tablero);
+			left(i, j, tablero);
 		}
 		
 		//esquina superior derecha
