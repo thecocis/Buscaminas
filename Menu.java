@@ -75,7 +75,7 @@ public class Menu {
 		}
 		
 		System.out.print("  COLUMNA (de la 1 a la ");
-		System.out.print(m);
+		System.out.print(n);
 		System.out.println("):");
 		columna = reader.nextInt();
 		while(columna<1 || columna > n) {
@@ -102,7 +102,7 @@ public class Menu {
 		
 		arrayTirada[0] = fila - 1;
 		arrayTirada[1] = columna - 1;
-		arrayTirada[2] = accion - 1;
+		arrayTirada[2] = accion;
 		
 		return arrayTirada;
 		

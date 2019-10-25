@@ -70,8 +70,9 @@ public class Tablero {
 		columnaSeleccionada = arrayTirada[1];
 		accion = arrayTirada[2];
 
-		abrirCasilla.abrirCasilla(filaSeleccionada, columnaSeleccionada, accion, tableroUsuario, tableroInterno);
-		
+		tableroUsuario = abrirCasilla.abrirCasilla(filaSeleccionada, columnaSeleccionada, accion, tableroUsuario, tableroInterno);
+
+		prints.tableroUsuario(m, n, tableroUsuario);
 	}
 	
 }

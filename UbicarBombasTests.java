@@ -1,151 +1,59 @@
 package Tests;
 
 import static org.junit.Assert.*;
-
+import java.util.Arrays;
+import java.util.Collection;
+import org.junit.Before;
 import org.junit.Test;
-
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import Buscaminas.*;
 
+@RunWith(Parameterized.class)
 public class UbicarBombasTests {
 
-	//*****************************************************
-		//			TESTS CAJA NEGRA POSICIONAR BOMBAS
-		//*****************************************************
-		
-		@Test
-		public void testOfPosicionarBombasCreadas1() {
-			int m = 3;
-			int n = 3;
-			int nBombas = 1;
-
-			CreacionTableros creacion = new CreacionTableros();
-			int tablero[][] = new int[m][n];
-			tablero = creacion.tableroInterno(m, n);
-			
-			int[] valorRandomTeorico = {1};
-			
-			UbicarBombas ubicarBombas = new UbicarBombas();
-			tablero = ubicarBombas.posicionarBombasCreadas(valorRandomTeorico, nBombas, tablero, m, n);
-			
-			int tablero_expected[][] = {{9,0,0},{0,0,0},{0,0,0}};
-			
-
-			assertArrayEquals("La bomba no se posiciona correctamente", tablero, tablero_expected);	
-			
-		}
-		
-		@Test
-		public void testOfPosicionarBombasCreadas2() {
-			int m = 3;
-			int n = 3;
-			int nBombas = 1;
-
-			CreacionTableros creacion = new CreacionTableros();
-			int tablero[][] = new int[m][n];
-			tablero = creacion.tableroInterno(m, n);
-			
-			int[] valorRandomTeorico = {9};
-			UbicarBombas ubicarBombas = new UbicarBombas();
-			tablero = ubicarBombas.posicionarBombasCreadas(valorRandomTeorico, nBombas, tablero, m, n);
-			
-			int tablero_expected[][] = {{0,0,0},{0,0,0},{0,0,9}};
-			assertArrayEquals("La bomba no se posiciona correctamente", tablero, tablero_expected);	
-			
-		}
-		
-		@Test
-		public void testOfPosicionarBombasCreadas3() {
-			int m = 3;
-			int n = 3;
-			int nBombas = 1;
-
-			CreacionTableros creacion = new CreacionTableros();
-			int tablero[][] = new int[m][n];
-			tablero = creacion.tableroInterno(m, n);
-			
-			int[] valorRandomTeorico = {5};
-			UbicarBombas ubicarBombas = new UbicarBombas();
-			tablero = ubicarBombas.posicionarBombasCreadas(valorRandomTeorico, nBombas, tablero, m, n);
-			
-			int tablero_expected[][] = {{0,0,0},{0,9,0},{0,0,0}};
-			assertArrayEquals("La bomba no se posiciona correctamente", tablero, tablero_expected);	
-			
-		}
-		
-		@Test
-		public void testOfPosicionarBombasCreadas4() {
-			int m = 3;
-			int n = 3;
-			int nBombas = 2;
-
-			CreacionTableros creacion = new CreacionTableros();
-			int tablero[][] = new int[m][n];
-			tablero = creacion.tableroInterno(m, n);
-			
-			int[] valorRandomTeorico = {5, 2};
-			UbicarBombas ubicarBombas = new UbicarBombas();
-			tablero = ubicarBombas.posicionarBombasCreadas(valorRandomTeorico, nBombas, tablero, m, n);
-			
-			int tablero_expected[][] = {{0,9,0},{0,9,0},{0,0,0}};
-			assertArrayEquals("La bomba no se posiciona correctamente", tablero, tablero_expected);	
-			
-		}
-		
-		@Test
-		public void testOfPosicionarBombasCreadas5() {
-			int m = 3;
-			int n = 3;
-			int nBombas = 0;
-
-			CreacionTableros creacion = new CreacionTableros();
-			int tablero[][] = new int[m][n];
-			tablero = creacion.tableroInterno(m, n);
-			
-			int[] valorRandomTeorico = {0};
-			UbicarBombas ubicarBombas = new UbicarBombas();
-			tablero = ubicarBombas.posicionarBombasCreadas(valorRandomTeorico, nBombas, tablero, m, n);
-			
-			int tablero_expected[][] = {{0,0,0},{0,0,0},{0,0,0}};
-			assertArrayEquals("La bomba no se posiciona correctamente", tablero, tablero_expected);	
-			
-		}
-		
-		@Test
-		public void testOfPosicionarBombasCreadas6() {
-			int m = 3;
-			int n = 3;
-			int nBombas = 4;
-
-			CreacionTableros creacion = new CreacionTableros();
-			int tablero[][] = new int[m][n];
-			tablero = creacion.tableroInterno(m, n);
-			
-			int[] valorRandomTeorico = {5,2,1,9};
-			UbicarBombas ubicarBombas = new UbicarBombas();
-			tablero = ubicarBombas.posicionarBombasCreadas(valorRandomTeorico, nBombas, tablero, m, n);
-			
-			int tablero_expected[][] = {{9,9,0},{0,9,0},{0,0,9}};
-			assertArrayEquals("La bomba no se posiciona correctamente", tablero, tablero_expected);	
-			
-		}
-		
-		@Test
-		public void testOfPosicionarBombasCreadas7() {
-			int m = 3;
-			int n = 3;
-			int nBombas = 9;
-
-			CreacionTableros creacion = new CreacionTableros();
-			int tablero[][] = new int[m][n];
-			tablero = creacion.tableroInterno(m, n);
-			
-			int[] valorRandomTeorico = {3,4,6,7,8,5,2,1,9};
-			UbicarBombas ubicarBombas = new UbicarBombas();
-			tablero = ubicarBombas.posicionarBombasCreadas(valorRandomTeorico, nBombas, tablero, m, n);
-			
-			int tablero_expected[][] = {{9,9,9},{9,9,9},{9,9,9}};
-			assertArrayEquals("La bomba no se posiciona correctamente", tablero, tablero_expected);	
-			
-		}
+	private UbicarBombas _sut;
+	private int[][] _expected;
+	private int _numero1;
+	private int _numero2;
+	private int _nBombas;
+	private int[] _nArray;
+	private int[][] _tableroInterno;
+	
+	@Before
+	public void inicializacion() {
+		_sut = new UbicarBombas();
+	}
+	
+	public UbicarBombasTests(int numero1, int numero2, int nBombas, int[] nArray, int[][] expected, int[][] tablero) {
+		_expected = expected;
+		_numero1 = numero1;
+		_numero2 = numero2;
+		_nBombas = nBombas;
+		_nArray = nArray;
+		_tableroInterno = tablero;
+	}
+	
+	
+	@Parameterized.Parameters
+	public static Collection<Object[]> getData() {
+		return Arrays.asList(new Object[][] {
+			{ 3, 3, 1, new int[] {1}, new int[][]{{9,0,0},{0,0,0},{0,0,0}}, new int[][]{{0,0,0},{0,0,0},{0,0,0}}},
+			{ 3, 3, 1, new int[] {3}, new int[][]{{0,0,9},{0,0,0},{0,0,0}}, new int[][]{{0,0,0},{0,0,0},{0,0,0}}},
+			{ 3, 3, 1, new int[] {7}, new int[][]{{0,0,0},{0,0,0},{9,0,0}}, new int[][]{{0,0,0},{0,0,0},{0,0,0}}},
+			{ 3, 3, 1, new int[] {9}, new int[][]{{0,0,0},{0,0,0},{0,0,9}}, new int[][]{{0,0,0},{0,0,0},{0,0,0}}},
+			{ 3, 3, 1, new int[] {5}, new int[][]{{0,0,0},{0,9,0},{0,0,0}}, new int[][]{{0,0,0},{0,0,0},{0,0,0}}},
+			{ 3, 3, 0, new int[] {}, new int[][]{{0,0,0},{0,0,0},{0,0,0}}, new int[][]{{0,0,0},{0,0,0},{0,0,0}}},
+			{ 3, 3, 2, new int[] {5,2}, new int[][]{{0,9,0},{0,9,0},{0,0,0}}, new int[][]{{0,0,0},{0,0,0},{0,0,0}}},
+			{ 3, 3, 4, new int[] {5, 2, 1, 9}, new int[][]{{9,9,0},{0,9,0},{0,0,9}}, new int[][]{{0,0,0},{0,0,0},{0,0,0}}},
+			{ 3, 3, 9, new int[] {3,4,6,7,8,5,2,1,9}, new int[][]{{9,9,9},{9,9,9},{9,9,9}}, new int[][]{{0,0,0},{0,0,0},{0,0,0}}}
+		});
+	}
+	
+	@Test
+	public void testOfUbicarBombas() {
+		assertArrayEquals(_expected, _sut.posicionarBombasCreadas( _nArray, _nBombas, _tableroInterno, _numero1, _numero2));
+	}
+	
 
 }

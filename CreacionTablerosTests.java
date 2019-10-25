@@ -1,142 +1,50 @@
 package Tests;
 
 import static org.junit.Assert.*;
+import java.util.Arrays;
+import java.util.Collection;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import Buscaminas.*;
 
+@RunWith(Parameterized.class)
 public class CreacionTablerosTests {
 	
-	//Probar con negativos y 0
-	@Test
-	public void testOfCrearTablero8x8() {
-		CreacionTableros creacion = new CreacionTableros();
-		int tablero[][] = new int[8][8];
-		tablero = creacion.tableroInterno(8, 8);
-		
-		int tablero_expected[][] = {{0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0}};
-		assertArrayEquals("El tablero no se inicializa bien", tablero, tablero_expected);
+	private CreacionTableros _sut ;
+	private int[][] _expected;
+	private int numero1;
+	private int numero2;
+	
+	@Before
+	public void inicializacion() {
+		_sut = new CreacionTableros();
 	}
 	
-	@Test
-	public void testOfCrearTablero2x2() {
-		CreacionTableros creacion = new CreacionTableros();
-		int tablero[][] = new int[2][2];
-		tablero = creacion.tableroInterno(2, 2);
-		int tablero_expected[][] = {{0,0}, {0,0}};
-		assertArrayEquals("El tablero no se inicializa bien", tablero, tablero_expected);
+	public CreacionTablerosTests(int[][] expected, int[] input) {
+		_expected = expected;
+		numero1 = input[0];
+		numero2 = input[1];
 	}
 	
-	@Test
-	public void testOfCrearTablero3x5() {
-		CreacionTableros creacion = new CreacionTableros();
-		int tablero[][] = new int[3][5];
-		tablero = creacion.tableroInterno(3, 5);
-		int tablero_expected[][] = {{0,0,0,0,0}, {0,0,0,0,0},{0,0,0,0,0}};
-		assertArrayEquals("El tablero no se inicializa bien", tablero, tablero_expected);
+	@Parameterized.Parameters
+	public static Collection<Object[]> getData() {
+		return Arrays.asList(new Object[][] {
+			{ new int[][]{{0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0}}, new int[] {8, 8}},
+			{ new int[][]{{0,0}, {0,0}}, new int[] {2,2}},
+			{ new int[][]{{0,0,0,0,0}, {0,0,0,0,0},{0,0,0,0,0}}, new int[] {3,5}},
+			{ new int[][]{{0,0,0,0,0,0,0,0,0}}, new int[] {1,9}},
+			{ new int[][]{{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}}, new int[] {9,1}},
+			{ new int[][]{{0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0}}, new int[] {0,8}},
+			{ new int[][]{{0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0}}, new int[] {0,0}},
+		});
 	}
 	
+
 	@Test
-	public void testOfCrearTablero1x9() {
-		CreacionTableros creacion = new CreacionTableros();
-		int tablero[][] = new int[1][9];
-		tablero = creacion.tableroInterno(1, 9);
-		int tablero_expected[][] = {{0,0,0,0,0,0,0,0,0}};
-		assertArrayEquals("El tablero no se inicializa bien", tablero, tablero_expected);
+	public void testOfCrearTablero() {
+		assertArrayEquals(_expected, _sut.tableroInterno(numero1, numero2));
 	}
 	
-	@Test
-	public void testOfCrearTablero9x1() {
-		CreacionTableros creacion = new CreacionTableros();
-		int tablero[][] = new int[9][1];
-		tablero = creacion.tableroInterno(9, 1);
-		int tablero_expected[][] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
-		assertArrayEquals("El tablero no se inicializa bien", tablero, tablero_expected);
-	}
-	
-	// EXCEPCIONES
-	@Test
-	public void testOfCrearTableroNumeroNegativo() {
-		try {
-		int m = -1;
-		int n = 8;
-		CreacionTableros creacion = new CreacionTableros();
-		int[][] tableroUsuario = creacion.tableroInterno(m,n);
-		assertTrue(false);
-		}catch (Exception e) {
-			assertTrue(true);
-		}
-	}
-	
-	@Test
-	public void testOfCrearTableroDosNumerosNegativos() {
-		try {
-		int m = -1;
-		int n = -8;
-		CreacionTableros creacion = new CreacionTableros();
-		int[][] tableroUsuario = creacion.tableroInterno(m,n);
-		assertTrue(false);
-		}catch (Exception e) {
-			assertTrue(true);
-		}
-	}
-	
-	@Test
-	public void testOfCrearTablero0x8() {
-		int m = 0;
-		int n = 8;
-		CreacionTableros creacion = new CreacionTableros();
-		int[][] tableroUsuario = creacion.tableroInterno(m,n);
-		int tablero_expected[][] = {{0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0}};
-		
-		assertArrayEquals("Tablero no inicializado bien", tablero_expected, tableroUsuario);
-	}
-	
-	
-	
-	/////////////////////USUARIO///////////////////////////
-	@Test
-	public void testOfTableroUsuario8x8() {
-		int m = 8;
-		int n = 8;
-		CreacionTableros creacion = new CreacionTableros();
-		char[][] tableroUsuario = creacion.tableroUsuario(m,n);
-		char[][] tableroExpected = {{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
-		assertArrayEquals("Tablero usuario mal", tableroUsuario, tableroExpected);
-	}
-	
-	@Test
-	public void testOfTableroUsuarioNumeroNegativo() {
-		try {
-		int m = -1;
-		int n = 8;
-		CreacionTableros creacion = new CreacionTableros();
-		char[][] tableroUsuario = creacion.tableroUsuario(m,n);
-		assertTrue(false);
-		}catch (Exception e) {
-			assertTrue(true);
-		}
-	}
-	
-	@Test
-	public void testOfTableroUsuarioDosNumerosNegativos() {
-		try {
-		int m = -1;
-		int n = -8;
-		CreacionTableros creacion = new CreacionTableros();
-		char[][] tableroUsuario = creacion.tableroUsuario(m,n);
-		assertTrue(false);
-		}catch (Exception e) {
-			assertTrue(true);
-		}
-	}
-	
-	@Test
-	public void testOfTableroUsuario0x0() {
-		int m = 0;
-		int n = 0;
-		CreacionTableros creacion = new CreacionTableros();
-		char[][] tableroUsuario = creacion.tableroUsuario(m,n);
-		char[][] tableroExpected = {{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
-		assertArrayEquals("Tablero usuario mal", tableroUsuario, tableroExpected);
-	}
 }

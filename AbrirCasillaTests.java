@@ -11,24 +11,29 @@ public class AbrirCasillaTests {
 		UbicarBombas ubicarBombas = new UbicarBombas();
 		PonerNumeros ponerNumeros = new PonerNumeros();
 		PrintsPantalla prints = new PrintsPantalla();
-		int arrayBombas[] = {1,8, 32, 28, 35, 36, 38, 41, 47, 48, 52, 55};
+		int arrayBombas[] = {1, 8, 32, 28, 35, 36, 38, 41, 47, 48, 52, 55};
 		int tableroInterno[][] = creacion.tableroInterno(8, 8);
 		ubicarBombas.posicionarBombasCreadas(arrayBombas, 12, tableroInterno, 8, 8);
 		tableroInterno = ponerNumeros.crearTableroConNumeros(8, 8, tableroInterno);
 		prints.tableroInterno(8, 8, tableroInterno);
+		System.out.println(tableroInterno);
+		
 		return tableroInterno;
+		
 	}
 	
 	
 	@Test
 	public void TestOfNumero() {
 		AbrirCasilla abrir = new AbrirCasilla();
+
+		PrintsPantalla prints = new PrintsPantalla();
 		int tableroInterno[][] = TableroEnsayo();
 		char[][] tableroUsuario = {{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
 		
 		tableroUsuario = abrir.abrirCasilla(0, 1, 1, tableroUsuario, tableroInterno);
 		char[][] expected = {{'-', '1', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
-		
+		prints.tableroUsuario(8, 8, tableroUsuario);
 		assertArrayEquals("La casilla numérica se abre maaal", expected, tableroUsuario);
 	}
 	
@@ -103,7 +108,7 @@ public class AbrirCasillaTests {
 		
 		assertArrayEquals("La casilla numérica se abre maaal", expected, tableroUsuario);
 	}
-	
+	////////////////////////////////////////////////////////////////////////////////////
 	@Test
 	public void TestOfCasilla0() {
 		AbrirCasilla abrir = new AbrirCasilla();
@@ -111,9 +116,105 @@ public class AbrirCasillaTests {
 		char[][] tableroUsuario = {{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
 		
 		tableroUsuario = abrir.abrirCasilla(0, 4, 1, tableroUsuario, tableroInterno);
-		char[][] expected = {{'-', '1', '0', '0', '0', '0', '1', '-'},{'-', '1', '0', '0', '0', '0', '1', '-'},{'0', '0', '1', '1', '1', '0', '1', '-'},{'0', '1', '3', '-', '3', '1', '2', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		char[][] expected = {{'-', '1', '0', '0', '0', '0', '1', '-'},{'1', '1', '0', '0', '0', '0', '1', '-'},{'0', '0', '1', '1', '1', '0', '1', '-'},{'0', '1', '3', '-', '3', '1', '2', '-'},{'1', '2', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
 		
 		assertArrayEquals("La casilla numérica se abre maaal", expected, tableroUsuario);
 	}
+	
+	@Test
+	public void TestOfCasilla1() {
+		AbrirCasilla abrir = new AbrirCasilla();
+		int tableroInterno[][] = TableroEnsayo();
+		char[][] tableroUsuario = {{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		
+		tableroUsuario = abrir.abrirCasilla(0, 3, 1, tableroUsuario, tableroInterno);
+		char[][] expected = {{'-', '1', '0', '0', '0', '0', '1', '-'},{'1', '1', '0', '0', '0', '0', '1', '-'},{'0', '0', '1', '1', '1', '0', '1', '-'},{'0', '1', '3', '-', '3', '1', '2', '-'},{'1', '2', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		
+		assertArrayEquals("La casilla numérica se abre maaal", expected, tableroUsuario);
+	}
+	
+	@Test
+	public void TestOfCasilla2() {
+		AbrirCasilla abrir = new AbrirCasilla();
+		int tableroInterno[][] = TableroEnsayo();
+		char[][] tableroUsuario = {{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		
+		tableroUsuario = abrir.abrirCasilla(1, 2, 1, tableroUsuario, tableroInterno);
+		char[][] expected = {{'-', '1', '0', '0', '0', '0', '1', '-'},{'1', '1', '0', '0', '0', '0', '1', '-'},{'0', '0', '1', '1', '1', '0', '1', '-'},{'0', '1', '3', '-', '3', '1', '2', '-'},{'1', '2', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		
+		assertArrayEquals("La casilla numérica se abre maaal", expected, tableroUsuario);
+	}
+	
+	@Test
+	public void TestOfCasilla3() {
+		AbrirCasilla abrir = new AbrirCasilla();
+		int tableroInterno[][] = TableroEnsayo();
+		char[][] tableroUsuario = {{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		
+		tableroUsuario = abrir.abrirCasilla(1, 5, 1, tableroUsuario, tableroInterno);
+		char[][] expected = {{'-', '1', '0', '0', '0', '0', '1', '-'},{'1', '1', '0', '0', '0', '0', '1', '-'},{'0', '0', '1', '1', '1', '0', '1', '-'},{'0', '1', '3', '-', '3', '1', '2', '-'},{'1', '2', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		
+		assertArrayEquals("La casilla numérica se abre maaal", expected, tableroUsuario);
+	}
+	
+	@Test
+	public void TestOfCasilla4() {
+		AbrirCasilla abrir = new AbrirCasilla();
+		int tableroInterno[][] = TableroEnsayo();
+		char[][] tableroUsuario = {{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		
+		tableroUsuario = abrir.abrirCasilla(2, 5, 1, tableroUsuario, tableroInterno);
+		char[][] expected = {{'-', '1', '0', '0', '0', '0', '1', '-'},{'1', '1', '0', '0', '0', '0', '1', '-'},{'0', '0', '1', '1', '1', '0', '1', '-'},{'0', '1', '3', '-', '3', '1', '2', '-'},{'1', '2', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		
+		assertArrayEquals("La casilla numérica se abre maaal", expected, tableroUsuario);
+	}
+	
+	@Test
+	public void TestOfCasilla5() {
+		AbrirCasilla abrir = new AbrirCasilla();
+		int tableroInterno[][] = TableroEnsayo();
+		char[][] tableroUsuario = {{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		
+		tableroUsuario = abrir.abrirCasilla(2, 1, 1, tableroUsuario, tableroInterno);
+		char[][] expected = {{'-', '1', '0', '0', '0', '0', '1', '-'},{'1', '1', '0', '0', '0', '0', '1', '-'},{'0', '0', '1', '1', '1', '0', '1', '-'},{'0', '1', '3', '-', '3', '1', '2', '-'},{'1', '2', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		
+		assertArrayEquals("La casilla numérica se abre maaal", expected, tableroUsuario);
+	}
+	
+	@Test
+	public void TestOfCasilla6() {
+		AbrirCasilla abrir = new AbrirCasilla();
+		int tableroInterno[][] = TableroEnsayo();
+		char[][] tableroUsuario = {{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		
+		tableroUsuario = abrir.abrirCasilla(3, 0, 1, tableroUsuario, tableroInterno);
+		char[][] expected = {{'-', '1', '0', '0', '0', '0', '1', '-'},{'1', '1', '0', '0', '0', '0', '1', '-'},{'0', '0', '1', '1', '1', '0', '1', '-'},{'0', '1', '3', '-', '3', '1', '2', '-'},{'1', '2', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'},{'-', '-', '-', '-', '-', '-', '-', '-'}};
+		
+		assertArrayEquals("La casilla numérica se abre maaal", expected, tableroUsuario);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
