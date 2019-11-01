@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class Menu {
 
+	private Scanner reader;
+	private Scanner reader2;
+
 	public int[] crearMenu() {
 		int n = 0;
 		int m = 0;
@@ -42,7 +45,7 @@ public class Menu {
 			System.out.println("----------------------------------------------\n");
 			System.out.println("  PULSA 1 PARA NIVEL FÁCIL, PULSA 2 PARA NIVEL DIFÍCIL");
 			
-			Scanner reader = new Scanner(System.in);
+			reader = new Scanner(System.in);
 			seleccion = reader.nextInt();
 			
 			if(seleccion < 1 || seleccion >2) {
@@ -58,7 +61,7 @@ public class Menu {
 		System.out.println("----------------------------------------------\n");
 		System.out.println("  SELECCIONA LA CASILLA QUE QUEIRES PICAR Y DI QUÉ QUIERES HACER: \n");
 		
-		Scanner reader = new Scanner(System.in);
+		reader2 = new Scanner(System.in);
 		
 		int fila = 0;
 		int columna = 0;
@@ -66,23 +69,23 @@ public class Menu {
 		System.out.print("  FILA (de la 1 a la ");
 		System.out.print(m);
 		System.out.println("):");
-		fila = reader.nextInt();
+		fila = reader2.nextInt();
 		while(fila<1 || fila > m) {
 			System.out.print("   INSERTA UNA FILA VÁLIDA PESAO (de la 1 a la ");
 			System.out.print(m);
 			System.out.println("):");
-			fila = reader.nextInt();
+			fila = reader2.nextInt();
 		}
 		
 		System.out.print("  COLUMNA (de la 1 a la ");
 		System.out.print(n);
 		System.out.println("):");
-		columna = reader.nextInt();
+		columna = reader2.nextInt();
 		while(columna<1 || columna > n) {
 			System.out.print("   INSERTA UNA COLUMNA VÁLIDA PESAO (de la 1 a la ");
 			System.out.print(n);
 			System.out.println("):");
-			columna = reader.nextInt();
+			columna = reader2.nextInt();
 		}
 		
 		System.out.println("  SI DESEA ABRIR LA CASILLA PULSE 1");
@@ -92,12 +95,12 @@ public class Menu {
 
 		System.out.println("\n  	GRACIAS");
 
-		accion = reader.nextInt();
+		accion = reader2.nextInt();
 		while(accion<1 || accion > 4) {
 			System.out.print("   INSERTA UNA COLUMNA VÁLIDA PESAO (de la 1 a la ");
 			System.out.print(n);
 			System.out.println("):");
-			accion = reader.nextInt();
+			accion = reader2.nextInt();
 		}
 		
 		arrayTirada[0] = fila - 1;
