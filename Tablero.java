@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-@SuppressWarnings("unused")
+
 public class Tablero {
 	
 	public static void main(String[] args) {
@@ -20,6 +20,8 @@ public class Tablero {
 		PrintsPantalla prints = new PrintsPantalla();
 		CrearBombas crearBombas = new CrearBombas();
 		PonerNumeros ponerNumeros = new PonerNumeros();
+		
+		boolean start = true;
 		
 		
 		//***********************
@@ -56,11 +58,11 @@ public class Tablero {
 		int accion = 0;
 		int arrayTirada[] = new int[3];
 		
+		char tableroUsuario[][] = creacion.tableroUsuario(m, n);
 		
 		//por aquí empezar el while.
+		while (start) {
 		System.out.println(" ");
-		char tableroUsuario[][] = creacion.tableroUsuario(m, n);
-
 		
 		prints.tableroUsuario(m, n, tableroUsuario);
 		
@@ -72,7 +74,17 @@ public class Tablero {
 		AbrirCasilla abrirCasilla = new AbrirCasilla();
 		tableroUsuario = abrirCasilla.abrirCasilla(filaSeleccionada, columnaSeleccionada, accion, tableroUsuario, tableroInterno , m, n);
 
-		prints.tableroUsuario(m, n, tableroUsuario);
+		//prints.tableroUsuario(m, n, tableroUsuario);
+		if (creacion.isLost(tableroInterno, tableroUsuario, m, n)) {
+			start = false;
+			prints.tableroUsuario(m, n, tableroUsuario);
+			System.out.println(" F, has perdido ");
+		} else if (creacion.isWon(tableroInterno, tableroUsuario, m, n, nBombas)) {
+			start = false;
+			System.out.println(" Enhorabuena, has ganado ");
+		}
+		
+		}
 	}
 	
 }

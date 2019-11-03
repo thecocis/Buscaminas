@@ -11,10 +11,12 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class CreacionTablerosTests {
 	
-	private CreacionTableros _sut ;
+	private CreacionTableros _sut;
 	private int[][] _expected;
 	private int numero1;
 	private int numero2;
+	
+
 	
 	@Before
 	public void inicializacion() {
@@ -44,6 +46,8 @@ public class CreacionTablerosTests {
 	@Test
 	public void testOfCrearTablero() {
 		assertArrayEquals(_expected, _sut.tableroInterno(numero1, numero2));
+
 	}
+
 	
 }

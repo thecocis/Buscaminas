@@ -22,7 +22,7 @@ public class CrearBombas {
 		int contador = 0;
 		while(numbers.size()>(mul - nBombas)) {
 			int valorEntero = rand.nextInt(numbers.size());
-			arrayBombas[contador] = valorEntero;
+			arrayBombas[contador] = valorEntero; 
 			numbers.remove(valorEntero);
 			contador++;
 		}

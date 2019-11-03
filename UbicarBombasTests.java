@@ -13,8 +13,8 @@ public class UbicarBombasTests {
 
 	private UbicarBombas _sut;
 	private int[][] _expected;
-	private int _numero1;
-	private int _numero2;
+	private int _m;
+	private int _n;
 	private int _nBombas;
 	private int[] _nArray;
 	private int[][] _tableroInterno;
@@ -24,10 +24,10 @@ public class UbicarBombasTests {
 		_sut = new UbicarBombas();
 	}
 	
-	public UbicarBombasTests(int numero1, int numero2, int nBombas, int[] nArray, int[][] expected, int[][] tablero) {
+	public UbicarBombasTests(int m, int n, int nBombas, int[] nArray, int[][] expected, int[][] tablero) {
 		_expected = expected;
-		_numero1 = numero1;
-		_numero2 = numero2;
+		_m = m;
+		_n = n;
 		_nBombas = nBombas;
 		_nArray = nArray;
 		_tableroInterno = tablero;
@@ -51,8 +51,6 @@ public class UbicarBombasTests {
 	
 	@Test
 	public void testOfUbicarBombas() {
-		assertArrayEquals(_expected, _sut.posicionarBombasCreadas( _nArray, _nBombas, _tableroInterno, _numero1, _numero2));
+		assertArrayEquals(_expected, _sut.posicionarBombasCreadas( _nArray, _nBombas, _tableroInterno, _m, _n));
 	}
-	
-
 }

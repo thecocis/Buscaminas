@@ -31,13 +31,14 @@ public class AbrirCasilla {
 			casillaRecursiva(coordX, coordY, tableroInterno, tableroUsuario, m, n);
 		}
 	}
-	
+	/*
 	public void right(int[][] tableroInterno, char[][] tableroUsuario, int coordX, int coordY) {
 		if(tableroUsuario[coordX][coordY] == '-' && tableroInterno[coordX][coordY] >= 0 && tableroInterno[coordX][coordY] < 9) {
 			tableroUsuario[coordX][coordY] = '0';
 			
 		}
 	}
+	*/
 	
 	
 	public void casillaRecursiva(int coordX, int coordY, int[][] tableroInterno, char[][] tableroUsuario, int m, int n) {
@@ -186,6 +187,7 @@ public class AbrirCasilla {
 				}
 			}
 		}
+		
 	}
 }
 

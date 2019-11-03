@@ -59,7 +59,7 @@ public class Menu {
 
 		int arrayTirada[] = new int[3];
 		System.out.println("----------------------------------------------\n");
-		System.out.println("  SELECCIONA LA CASILLA QUE QUEIRES PICAR Y DI QUÉ QUIERES HACER: \n");
+		System.out.println("  SELECCIONA LA CASILLA QUE QUEIRES PICAR Y ESCOJE FUNCIÓN: \n");
 		
 		reader2 = new Scanner(System.in);
 		
@@ -71,7 +71,7 @@ public class Menu {
 		System.out.println("):");
 		fila = reader2.nextInt();
 		while(fila<1 || fila > m) {
-			System.out.print("   INSERTA UNA FILA VÁLIDA PESAO (de la 1 a la ");
+			System.out.print("   ERROR. INSERTA UNA FILA VÁLIDA  (de la 1 a la ");
 			System.out.print(m);
 			System.out.println("):");
 			fila = reader2.nextInt();
@@ -82,7 +82,7 @@ public class Menu {
 		System.out.println("):");
 		columna = reader2.nextInt();
 		while(columna<1 || columna > n) {
-			System.out.print("   INSERTA UNA COLUMNA VÁLIDA PESAO (de la 1 a la ");
+			System.out.print("   INSERTA UNA COLUMNA VÁLIDA  (de la 1 a la ");
 			System.out.print(n);
 			System.out.println("):");
 			columna = reader2.nextInt();
@@ -97,9 +97,7 @@ public class Menu {
 
 		accion = reader2.nextInt();
 		while(accion<1 || accion > 4) {
-			System.out.print("   INSERTA UNA COLUMNA VÁLIDA PESAO (de la 1 a la ");
-			System.out.print(n);
-			System.out.println("):");
+			System.out.print("   ERROR. INSERTA UNA COMANDA VÁLIDA  (de la 1 a la 4):");
 			accion = reader2.nextInt();
 		}
 		
