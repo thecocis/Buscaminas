@@ -2,6 +2,7 @@ package Buscaminas;
 
 public class PonerNumeros {
 	
+	
 	public void up(int i, int j, int tablero[][]) {
 		if (tablero[i-1][j] != 9)
 			tablero[i-1][j]++;

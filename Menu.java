@@ -4,15 +4,19 @@ import java.util.Scanner;
 
 public class Menu {
 
-	private Scanner reader;
-	private Scanner reader2;
-
+	private Teclado _teclado;
+	
+	public Menu() {
+		_teclado = new Teclado();
+	}
+	
 	public int[] crearMenu() {
 		int n = 0;
 		int m = 0;
 		int nBombas = 0;
 		int arrayVal[] = new int[3];
 		int seleccion = seleccionParametrosTablero();
+		
 		
 		if (seleccion == 1) {
 			m = 8;
@@ -45,8 +49,7 @@ public class Menu {
 			System.out.println("----------------------------------------------\n");
 			System.out.println("  PULSA 1 PARA NIVEL FÁCIL, PULSA 2 PARA NIVEL DIFÍCIL");
 			
-			reader = new Scanner(System.in);
-			seleccion = reader.nextInt();
+			seleccion = _teclado.inputKey();
 			
 			if(seleccion < 1 || seleccion >2) {
 				System.out.println("  ERROR INSERTA UN NÚMERO VÁLIDO\n");
@@ -59,9 +62,8 @@ public class Menu {
 
 		int arrayTirada[] = new int[3];
 		System.out.println("----------------------------------------------\n");
-		System.out.println("  SELECCIONA LA CASILLA QUE QUEIRES PICAR Y ESCOJE FUNCIÓN: \n");
+		System.out.println("  SELECCIONA LA CASILLA QUE QUEIRES PICAR Y DI QUÉ QUIERES HACER: \n");
 		
-		reader2 = new Scanner(System.in);
 		
 		int fila = 0;
 		int columna = 0;
@@ -69,23 +71,23 @@ public class Menu {
 		System.out.print("  FILA (de la 1 a la ");
 		System.out.print(m);
 		System.out.println("):");
-		fila = reader2.nextInt();
+		fila = _teclado.inputKey();
 		while(fila<1 || fila > m) {
-			System.out.print("   ERROR. INSERTA UNA FILA VÁLIDA  (de la 1 a la ");
+			System.out.print("   INSERTA UNA FILA VÁLIDA PESAO (de la 1 a la ");
 			System.out.print(m);
 			System.out.println("):");
-			fila = reader2.nextInt();
+			fila = _teclado.inputKey();
 		}
 		
 		System.out.print("  COLUMNA (de la 1 a la ");
 		System.out.print(n);
 		System.out.println("):");
-		columna = reader2.nextInt();
+		columna = _teclado.inputKey();
 		while(columna<1 || columna > n) {
-			System.out.print("   INSERTA UNA COLUMNA VÁLIDA  (de la 1 a la ");
+			System.out.print("   INSERTA UNA COLUMNA VÁLIDA PESAO (de la 1 a la ");
 			System.out.print(n);
 			System.out.println("):");
-			columna = reader2.nextInt();
+			columna = _teclado.inputKey();
 		}
 		
 		System.out.println("  SI DESEA ABRIR LA CASILLA PULSE 1");
@@ -95,10 +97,12 @@ public class Menu {
 
 		System.out.println("\n  	GRACIAS");
 
-		accion = reader2.nextInt();
+		accion = _teclado.inputKey();
 		while(accion<1 || accion > 4) {
-			System.out.print("   ERROR. INSERTA UNA COMANDA VÁLIDA  (de la 1 a la 4):");
-			accion = reader2.nextInt();
+			System.out.print("   INSERTA UNA COLUMNA VÁLIDA PESAO (de la 1 a la ");
+			System.out.print(n);
+			System.out.println("):");
+			accion = _teclado.inputKey();
 		}
 		
 		arrayTirada[0] = fila - 1;
@@ -106,12 +110,63 @@ public class Menu {
 		arrayTirada[2] = accion;
 		
 		return arrayTirada;
-		
-		
+	
 	}
 	
 	
+	public void tableroInterno(int m, int n, int tablero[][]) {
+		int j = 0;
+		for (int i = 0; i < m; i++) {
+			if (i == 0) {
+				for (j = 0; j < (n+1); j++) {
+					System.out.print(j );
+					System.out.print("   ");
+				}
+				System.out.println("\n");
+			}
+			System.out.print(i + 1);
+			System.out.print(" | ");
+			for (j = 0; j < n; j++) {
+				System.out.print(tablero[i][j]);
+				System.out.print(" | ");
+			}
+			System.out.println("\n");
+		}
+	}
 	
+	public void tableroUsuario(int m, int n, char tablero[][]) {
+		int j = 0;
+		for (int i = 0; i < m; i++) {
+			if (i == 0) {
+				System.out.print("       ");
+				for (j = 1; j < (n+1); j++) {
+					System.out.print(j);
+					if(j<10) {
+					System.out.print("   ");
+					}
+					else {
+
+						System.out.print("  ");
+					}
+				}
+				System.out.println("\n");
+			}
+			System.out.print(i + 1);
+			
+			if(i<9) {
+				System.out.print("    | ");
+			}else {
+
+				System.out.print("   | ");
+			}
+			
+			for (j = 0; j < n; j++) {
+				System.out.print(tablero[i][j]);
+				System.out.print(" | ");
+			}
+			System.out.println("\n");
+		}
+	}
 	
 	
 }

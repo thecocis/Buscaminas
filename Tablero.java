@@ -9,15 +9,15 @@ import java.util.Scanner;
 
 public class Tablero {
 	
+	
 	public static void main(String[] args) {
 		
 		//***********************
 		// CAPA INICIALIZACIONES
 		//***********************
-
+		
 		Menu menu = new Menu();
 		CreacionTableros creacion = new CreacionTableros();
-		PrintsPantalla prints = new PrintsPantalla();
 		CrearBombas crearBombas = new CrearBombas();
 		PonerNumeros ponerNumeros = new PonerNumeros();
 		
@@ -33,14 +33,11 @@ public class Tablero {
 		int n = arrayVal[1];
 		int nBombas = arrayVal[2];
 		
-		
 		int tableroInterno[][] = new int[m][n];
 		tableroInterno = creacion.tableroInterno(m, n);
-
 		
 		int arrayBombas[] = new int[nBombas];
 		arrayBombas = crearBombas.crearBombas(m, n, nBombas);
-		
 		
 		UbicarBombas ubicarBombas = new UbicarBombas();
 		tableroInterno = ubicarBombas.posicionarBombasCreadas(arrayBombas, nBombas, tableroInterno, m, n);
@@ -49,7 +46,7 @@ public class Tablero {
 		tableroInterno = ponerNumeros.crearTableroConNumeros(m, n, tableroInterno);
 		
 		
-		prints.tableroInterno(m, n, tableroInterno);
+		menu.tableroInterno(m, n, tableroInterno);
 		//***********************
 		// CAPA EXTERNA
 		//***********************
@@ -62,27 +59,27 @@ public class Tablero {
 		
 		//por aquí empezar el while.
 		while (start) {
-		System.out.println(" ");
-		
-		prints.tableroUsuario(m, n, tableroUsuario);
-		
-		arrayTirada = menu.crearMenuTirada(m, n);
-		filaSeleccionada = arrayTirada[0];
-		columnaSeleccionada = arrayTirada[1];
-		accion = arrayTirada[2];
-
-		AbrirCasilla abrirCasilla = new AbrirCasilla();
-		tableroUsuario = abrirCasilla.abrirCasilla(filaSeleccionada, columnaSeleccionada, accion, tableroUsuario, tableroInterno , m, n);
-
-		//prints.tableroUsuario(m, n, tableroUsuario);
-		if (creacion.isLost(tableroInterno, tableroUsuario, m, n)) {
-			start = false;
-			prints.tableroUsuario(m, n, tableroUsuario);
-			System.out.println(" F, has perdido ");
-		} else if (creacion.isWon(tableroInterno, tableroUsuario, m, n, nBombas)) {
-			start = false;
-			System.out.println(" Enhorabuena, has ganado ");
-		}
+			System.out.println(" ");
+			
+			menu.tableroUsuario(m, n, tableroUsuario);
+			
+			arrayTirada = menu.crearMenuTirada(m, n);
+			filaSeleccionada = arrayTirada[0];
+			columnaSeleccionada = arrayTirada[1];
+			accion = arrayTirada[2];
+	
+			AbrirCasilla abrirCasilla = new AbrirCasilla();
+			tableroUsuario = abrirCasilla.abrirCasilla(filaSeleccionada, columnaSeleccionada, accion, tableroUsuario, tableroInterno , m, n);
+	
+			//prints.tableroUsuario(m, n, tableroUsuario);
+			if (creacion.isLost(tableroInterno, tableroUsuario, m, n)) {
+				start = false;
+				menu.tableroUsuario(m, n, tableroUsuario);
+				System.out.println(" F, has perdido ");
+			} else if (creacion.isWon(tableroInterno, tableroUsuario, m, n, nBombas)) {
+				start = false;
+				System.out.println(" Enhorabuena, has ganado ");
+			}
 		
 		}
 	}

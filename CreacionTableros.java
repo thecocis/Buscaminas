@@ -2,6 +2,7 @@ package Buscaminas;
 
 public class CreacionTableros {
 
+	
 	public int[][] tableroInterno(int m, int n) {
 		if(m==0) m = 8;
 		if(n==0) n = 8;
@@ -64,5 +65,4 @@ public class CreacionTableros {
 		return lost;
 		
 	}
-	
 }

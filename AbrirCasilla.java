@@ -3,6 +3,7 @@ package Buscaminas;
 public class AbrirCasilla {
 	
 	
+	
 	// 1 --> abrir casilla
 	// 2 --> banderita --> P
 	// 3 --> marca bomba --> !
@@ -15,7 +16,7 @@ public class AbrirCasilla {
 			banderita(tableroUsuario, coordX, coordY);
 		}else if(a == 3){
 			marcaBomba(tableroUsuario, coordX, coordY);
-		}else if(a == 4) {
+		}else {
 			interrogante(tableroUsuario, coordX, coordY);
 		}
 		
@@ -24,21 +25,13 @@ public class AbrirCasilla {
 	
 	public void picarCasilla(char[][] tableroUsuario,int[][] tableroInterno, int coordX, int coordY, int m, int n) {
 		if (tableroInterno[coordX][coordY] == 9) {
-			mostrarTodasLasBombas(tableroUsuario, tableroInterno);
+			mostrarTodasLasBombas(tableroUsuario, tableroInterno, m, n);
 		}else if (tableroInterno[coordX][coordY]>0) {
 			tableroUsuario[coordX][coordY] = (char)(tableroInterno[coordX][coordY]+48);
 		}else if(tableroInterno[coordX][coordY] == 0) {
 			casillaRecursiva(coordX, coordY, tableroInterno, tableroUsuario, m, n);
 		}
 	}
-	/*
-	public void right(int[][] tableroInterno, char[][] tableroUsuario, int coordX, int coordY) {
-		if(tableroUsuario[coordX][coordY] == '-' && tableroInterno[coordX][coordY] >= 0 && tableroInterno[coordX][coordY] < 9) {
-			tableroUsuario[coordX][coordY] = '0';
-			
-		}
-	}
-	*/
 	
 	
 	public void casillaRecursiva(int coordX, int coordY, int[][] tableroInterno, char[][] tableroUsuario, int m, int n) {
@@ -121,9 +114,9 @@ public class AbrirCasilla {
 				left(coordX, coordY, tableroInterno, tableroUsuario, m, n);
 				upLeft(coordX, coordY, tableroInterno, tableroUsuario, m, n);
 				
-			}else {
+			}/*else {
 				System.out.print("F, ha petado");
-			}
+			}*/
 
 		}else if (tableroUsuario[coordX][coordY] == '-' && tableroInterno[coordX][coordY] >= 1 && tableroInterno[coordX][coordY] <= 8) {
 			tableroUsuario[coordX][coordY] = (char)(tableroInterno[coordX][coordY]+48);
@@ -165,8 +158,6 @@ public class AbrirCasilla {
 	}	
 	
 	
-	
-	
 	public void banderita(char[][] tableroUsuario, int coordX, int coordY) {
 		tableroUsuario[coordX][coordY] = 'P';
 	}
@@ -179,15 +170,14 @@ public class AbrirCasilla {
 		tableroUsuario[coordX][coordY] = '?';
 	}
 	
-	public void mostrarTodasLasBombas(char[][] tableroUsuario,int[][] tableroInterno) {
-		for (int i = 0; i<8; i++) {
-			for (int j = 0; j < 8; j++) {
+	public void mostrarTodasLasBombas(char[][] tableroUsuario, int[][] tableroInterno, int m, int n) {
+		for (int i = 0; i<m; i++) {
+			for (int j = 0; j < n; j++) {
 				if(tableroInterno[i][j] == 9) {
 					tableroUsuario[i][j] = 'X';
 				}
 			}
 		}
-		
 	}
 }
 

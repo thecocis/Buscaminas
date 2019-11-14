@@ -1,4 +1,4 @@
-package Buscaminas;
+package Tests;
 
 import static org.junit.Assert.*;
 import java.util.Arrays;
@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import Buscaminas.*;
+
 
 @RunWith(Parameterized.class)
 public class CreacionTablerosTestsExceptions {
@@ -44,6 +46,15 @@ public class CreacionTablerosTestsExceptions {
 		}
 	}
 	
-	
+	@Test
+	public void testOfCrearTableroUsuarioNegativo() {
+		try {
+		_sut.tableroUsuario(numero1, numero2);
+		assertTrue(false);
+		}catch (Exception e) {
+			assertTrue(true);
+		}
+	}
+
 
 }

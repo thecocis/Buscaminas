@@ -22,16 +22,18 @@ public class CrearBombas {
 		int contador = 0;
 		while(numbers.size()>(mul - nBombas)) {
 			int valorEntero = rand.nextInt(numbers.size());
+			while (valorEntero == 0) {
+				valorEntero = rand.nextInt(numbers.size());
+			}
 			arrayBombas[contador] = valorEntero; 
 			numbers.remove(valorEntero);
 			contador++;
 		}
-		
-		//comprobacion de los numeros
-		for (int s = 0; s< nBombas; s++) {
-			//System.out.print(arrayBombas[s]);
-			//System.out.println(" ");
-		}
+		/*
+		for( int c =0; c <nBombas; c++) {
+			System.out.print(arrayBombas[c]);
+			System.out.print(" ");
+		}*/
 		
 		return arrayBombas;
 	}

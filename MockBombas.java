@@ -2,54 +2,30 @@ package Buscaminas;
 
 public class MockBombas extends CrearBombas{
 	
-	private int _nBombas = 11;
-	private int _m = 8;
-	private int _n = 8;
-	
-	public int[][] getTableroRand1() {
-		int[][] mock = {{9,1,0,0,0,0,1,9}, {1,1,0,0,0,0,1,1}, {0,0,1,1,1,0,1,1}, {0,1,3,9,3,1,2,9}, 
-				{1,2,9,9,3,9,4,3}, {9,2,3,3,3,3,9,9}, {1,1,1,9,1,2,9,3}, {0,1,1,1,1,1,1,1}};
-		return mock;
-	}
-	
-	public int[][] getBombasRand1() {
-		int[][] mock = {{9,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0}, {0,0,0,9,0,0,0,9}, 
-				{0,0,9,9,0,9,0,0}, {9,0,0,0,0,0,9,9}, {0,0,0,9,0,0,9,0}, {0,0,0,0,0,0,0,0}};
-		return mock;
-	}
+	public int[] getArrayBombas(int seleccionMock) {
 		
-	public int[] getArrayBombas() {
-		int[] bombas = {1, 28, 32, 35, 36, 38, 41, 47, 48, 52, 55};
-		return bombas;
-	}
-	public int[][] getTableroVacio() {
-		int[][] mock = {{0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0}, 
-				{0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0}, };
-		return mock;
-	}
-
-	public int getnBombas() {
-		return _nBombas;
-	}
-
-	public void setnBombas(int _nBombas) {
-		this._nBombas = _nBombas;
-	}
-
-	public int getm() {
-		return _m;
-	}
-
-	public void setm(int _m) {
-		this._m = _m;
-	}
-
-	public int getn() {
-		return _n;
-	}
-
-	public void setn(int _n) {
-		this._n = _n;
+		switch (seleccionMock) {
+			case 1:
+				return new int[] {1};
+			case 2:
+				return new int[] {3};
+			case 3:
+				return new int[] {7};
+			case 4:
+				return new int[] {9};
+			case 5:
+				return new int[] {5};
+			case 6:
+				return new int[] {5, 2};
+			case 7:
+				return new int[] {5, 2, 1, 9};
+			case 8:
+				return new int[] {3,4,6,7,8,5,2,1,9};
+			case 9:
+				return new int[] {1, 3, 7, 9};
+		}
+				
+		return new int[] {};
 	}
 	
 }
