@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Random;
 
 public class CrearBombas {
+	
+	//Funcion encargada de crear un array de numeros aleatorios
+	//el numero significa la posicion donde ira colocada la bomba.
 	public int[] crearBombas(int m, int n, int nBombas) {
 		int mul = m*n;
 		int arrayBombas[] = new int[nBombas];

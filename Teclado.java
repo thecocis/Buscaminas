@@ -2,6 +2,7 @@ package Buscaminas;
 
 import java.util.Scanner;
 
+//Clase encargada de los inputs por teclado
 public class Teclado
 {
 	private Scanner _reader;

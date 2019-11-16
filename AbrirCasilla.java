@@ -8,6 +8,8 @@ public class AbrirCasilla {
 	// 2 --> banderita --> P
 	// 3 --> marca bomba --> !
 	// 4 --> interrogante --> ?
+	//Funcion principal, a partir de la cual, seleccionamos que es lo que se quiere hacer con la casilla en question
+	//gracias al atribut "a".
 	public char[][] abrirCasilla(int coordX, int coordY, int a, char[][] tableroUsuario, int[][] tableroInterno, int m, int n) {
 		
 		if(a == 1) {
@@ -23,6 +25,9 @@ public class AbrirCasilla {
 		return tableroUsuario;
 	}
 	
+	//Funcion encargada de abrir una casilla, si es 9, hay bomba, por lo tanto muestra todas las bombas.
+	//Si aparece cualquier numero se muestra y se sale de la funcion.
+	//Si aparece un 0, se entra en "casillaRecursiva".
 	public void picarCasilla(char[][] tableroUsuario,int[][] tableroInterno, int coordX, int coordY, int m, int n) {
 		if (tableroInterno[coordX][coordY] == 9) {
 			mostrarTodasLasBombas(tableroUsuario, tableroInterno, m, n);
@@ -33,7 +38,8 @@ public class AbrirCasilla {
 		}
 	}
 	
-	
+	//Funcion encargada de abrir los espacios del tablero, es decir, los sitios donde no hay numeros
+	//Comprueba 
 	public void casillaRecursiva(int coordX, int coordY, int[][] tableroInterno, char[][] tableroUsuario, int m, int n) {
 			
 		
@@ -124,7 +130,8 @@ public class AbrirCasilla {
 
 	}
 	
-	
+	//Funciones auxiliares de de casillaRecursiva para verificar las 
+	//casillas contiguas a la abierta en primera instancia
 	public void up(int coordX, int coordY, int[][] tableroInterno, char[][] tableroUsuario, int m, int n) {
 		casillaRecursiva(coordX-1, coordY, tableroInterno, tableroUsuario, m, n);
 	}
@@ -158,6 +165,9 @@ public class AbrirCasilla {
 	}	
 	
 	
+	
+	
+	//Funciones para colocar Banderas, marcas e interrogantes
 	public void banderita(char[][] tableroUsuario, int coordX, int coordY) {
 		tableroUsuario[coordX][coordY] = 'P';
 	}
@@ -170,6 +180,10 @@ public class AbrirCasilla {
 		tableroUsuario[coordX][coordY] = '?';
 	}
 	
+	
+	
+	
+	//Funcion para mostrar todas las bombas en el tablero del usuario, significa que se ha perdido el juego
 	public void mostrarTodasLasBombas(char[][] tableroUsuario, int[][] tableroInterno, int m, int n) {
 		for (int i = 0; i<m; i++) {
 			for (int j = 0; j < n; j++) {

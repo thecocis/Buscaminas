@@ -2,7 +2,7 @@ package Buscaminas;
 
 public class PonerNumeros {
 	
-	
+	//Funciones auxiliares para colocar numeros en la zona conjunta a una casilla principal.
 	public void up(int i, int j, int tablero[][]) {
 		if (tablero[i-1][j] != 9)
 			tablero[i-1][j]++;
@@ -43,6 +43,8 @@ public class PonerNumeros {
 			tablero[i-1][j-1]++;
 	}
 	
+	
+	//Funcion encargada de crear numeros a partir de las bombas que se tengan alrededor
 	public void crearNumeros(int i, int j, int tablero[][], int m, int n) {
 		
 		//arriba
@@ -118,11 +120,12 @@ public class PonerNumeros {
 			 downLeft(i, j, tablero);
 			 left(i, j, tablero);
 			 upLeft(i, j, tablero);
-		}else {
+		} /*else {
 			System.out.print("F, ha petado");
-		}
+		}*/
 	}
 	
+	//Funcion que llama a la anterior funcion para colocar los numeros en un tablelero especifico
 	public int[][] crearTableroConNumeros(int m, int n, int[][] tablero) {
 
 		for (int i = 0; i<m; i++) {

@@ -2,7 +2,8 @@ package Buscaminas;
 
 public class UbicarBombas {
 	
-	
+	//A partir de "arrayBombas", que contiene las posiciones de las bombas, esta función coloca cada bomba 
+	//en el sitio que le toca dentro del tablero pasado por parametro
 	public int[][] posicionarBombasCreadas(int arrayBombas[], int nBombas, int[][] tablero, int m, int n) {
 		int fila = 0;
 		int columna = 0;  

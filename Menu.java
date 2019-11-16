@@ -2,6 +2,8 @@ package Buscaminas;
 
 import java.util.Scanner;
 
+
+//Classe organizadora de las vistas de la aplicación, el usuario interactua con esta clase.
 public class Menu {
 
 	private Teclado _teclado;

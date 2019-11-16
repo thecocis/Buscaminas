@@ -47,6 +47,7 @@ public class Tablero {
 		
 		
 		menu.tableroInterno(m, n, tableroInterno);
+		
 		//***********************
 		// CAPA EXTERNA
 		//***********************
@@ -57,7 +58,7 @@ public class Tablero {
 		
 		char tableroUsuario[][] = creacion.tableroUsuario(m, n);
 		
-		//por aquí empezar el while.
+		//JUEGO - START
 		while (start) {
 			System.out.println(" ");
 			
