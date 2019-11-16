@@ -1,4 +1,4 @@
-package Tests;
+package Buscaminas;
 
 import static org.junit.Assert.*;
 

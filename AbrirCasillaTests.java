@@ -1,6 +1,7 @@
-package Tests;
+package Buscaminas;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -9,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import Buscaminas.*;
 
 
 @RunWith(Parameterized.class)
@@ -19,16 +19,19 @@ public class AbrirCasillaTests {
 	private char[][] _tableroUsuario;
 	private int _m;
 	private int _n;
-	private int _accion;
 	private AbrirCasilla _sut;
 	private int _fila;
 	private int _columna;
 	private char[][] _expected;
 	private String _mensaje;
+	
+	private static MockTeclado _mock;
+	private int _seleccionMock;
 		
 	@Before
 	public void inicializacion() {
 		_sut = new AbrirCasilla();
+		_mock = new MockTeclado();
 	}
 	
 	@After
@@ -36,12 +39,12 @@ public class AbrirCasillaTests {
 		_sut = null;
 	}
 	
-	public AbrirCasillaTests(int m, int n, int fila, int columna, int accion, String mensaje, int[][] tableroInterno, char[][] tableroUsuario, char[][] expected) {
+	public AbrirCasillaTests(int m, int n, int fila, int columna, int seleccionMock, String mensaje, int[][] tableroInterno, char[][] tableroUsuario, char[][] expected) {
 		_tableroInterno = tableroInterno;
 		_tableroUsuario = tableroUsuario;
 		_m = m;
 		_n = n;
-		_accion = accion;
+		_seleccionMock = seleccionMock;
 		_fila = fila;
 		_columna = columna;
 		_expected = expected;
@@ -147,8 +150,8 @@ public class AbrirCasillaTests {
 	}	
 	
 	@Test
-	public void testOfAbrirCasilla() {
-		assertArrayEquals(_mensaje, _expected, _sut.abrirCasilla(_fila, _columna, _accion, _tableroUsuario, _tableroInterno, _m, _n));
+	public void testOfAbrirCasilla() { 
+		assertArrayEquals(_mensaje, _expected, _sut.abrirCasilla(_fila, _columna, _mock.seleccionOpcion(_seleccionMock), _tableroUsuario, _tableroInterno, _m, _n));
 	}
 	
 	///TEST DE PICAR CASILLA YA PICADA Y QUE SALGA IGUAL y de errores de marcas
