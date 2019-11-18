@@ -81,7 +81,6 @@ public class Tablero {
 				start = false;
 				System.out.println(" Enhorabuena, has ganado ");
 			}
-		
 		}
 	}
 	
