@@ -46,9 +46,9 @@ public class IsLostTests {
 	@Parameterized.Parameters
 	public static Collection<Object[]> getData() {
 		return Arrays.asList(new Object[][] {
-			{true, new char[][] {{'P','X','P','-'},{'P','5','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4,"Test tablero 4x4 bombas en los bordes"},
-			{true, new char[][] {{'X','P','X','P'},{'P','5','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4,  "Test tablero 4x4 bombas en los bordes"},
-			{false, new char[][] {{'P','P','P','P'},{'P','P','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4, "Test tablero 4x4 bombas en los bordes"},
+			{true, new char[][] {{'P','X','P','-'},{'P','5','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4,"Test tablero 4x4 bombas en los bordes versión 1"},
+			{true, new char[][] {{'X','P','X','P'},{'P','5','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4,  "Test tablero 4x4 bombas en los bordes version 2"},
+			{false, new char[][] {{'P','P','P','P'},{'P','P','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4, "Test tablero 4x4 bombas en los bordes version 3"},
 			
 		});
 	}

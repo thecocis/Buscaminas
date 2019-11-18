@@ -46,7 +46,7 @@ public class Tablero {
 		tableroInterno = ponerNumeros.crearTableroConNumeros(m, n, tableroInterno);
 		
 		
-		menu.tableroInterno(m, n, tableroInterno);
+		//menu.tableroInterno(m, n, tableroInterno);
 		
 		//***********************
 		// CAPA EXTERNA
@@ -81,6 +81,7 @@ public class Tablero {
 				start = false;
 				System.out.println(" Enhorabuena, has ganado ");
 			}
+		
 		}
 	}
 	

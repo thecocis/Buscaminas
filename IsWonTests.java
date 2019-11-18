@@ -48,10 +48,10 @@ public class IsWonTests {
 	@Parameterized.Parameters
 	public static Collection<Object[]> getData() {
 		return Arrays.asList(new Object[][] {
-			{false, new char[][] {{'P','P','P','-'},{'P','5','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4, 12, "Test tablero 4x4 bombas en los bordes"},
-			{true, new char[][] {{'P','P','P','P'},{'P','5','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4, 12, "Test tablero 4x4 bombas en los bordes"},
-			{true, new char[][] {{'P','P','P','P'},{'P','P','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4, 12, "Test tablero 4x4 bombas en los bordes"},
-			{false, new char[][] {{'P','P','P','-'},{'P','P','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4, 12, "Test tablero 4x4 bombas en los bordes"},
+			{false, new char[][] {{'P','P','P','-'},{'P','5','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4, 12, "Test tablero 4x4 bombas en los bordes version 1"},
+			{true, new char[][] {{'P','P','P','P'},{'P','5','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4, 12, "Test tablero 4x4 bombas en los bordes version 2"},
+			{true, new char[][] {{'P','P','P','P'},{'P','P','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4, 12, "Test tablero 4x4 bombas en los bordes version 3"},
+			{false, new char[][] {{'P','P','P','-'},{'P','P','-','P'},{'P','-','5','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4, 12, "Test tablero 4x4 bombas en los bordes version 4"},
 			//CONSIDERAMOS QUE MIENTRAS ESTEN TODAS LAS BOMBAS CUBIERTAS SE ACABA EL JUEGO, DA IGUAL QUE HAYA P DONDE NO HAY BOMBAS
 			{true, new char[][] {{'P','P','P','P'},{'P','P','P','P'},{'P','P','P','P'},{'P','P','P','P'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4, 12, "Test tablero 4x4 todo P"},
 			{false, new char[][] {{'-','-','-','-'},{'-','-','-','-'},{'-','-','-','-'},{'-','-','-','-'}}, new int[][]{{9,9,9,9}, {9,5,5,9}, {9,5,5,9}, {9,9,9,9}},  4, 4, 12, "Test tablero 4x4 todo vació"},

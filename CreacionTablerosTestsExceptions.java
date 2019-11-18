@@ -16,23 +16,25 @@ public class CreacionTablerosTestsExceptions {
 	private CreacionTableros _sut ;
 	private int numero1;
 	private int numero2;
+	private String _mensaje;
 	
 	@Before
 	public void inicializacion() {
 		_sut = new CreacionTableros();
 	}
 	
-	public CreacionTablerosTestsExceptions(int[] input) {
+	public CreacionTablerosTestsExceptions(String mensaje, int[] input) {
 		numero1 = input[0];
 		numero2 = input[1];
+		_mensaje = mensaje;
 	}
 	
 	@Parameterized.Parameters
 	public static Collection<Object[]> getData() {
 		return Arrays.asList(new Object[][] {
-			{ new int[] {-2,2}},
-			{ new int[] {2,-2}},
-			{ new int[] {-2,-2}}
+			{ "Excepcion en el primer parámetro", new int[] {-2,2}},
+			{ "Excepcion en el segundo parámetro",new int[] {2,-2}},
+			{ "Excepcion en ambos parámetros",new int[] {-2,-2}}
 		});
 	}
 		
